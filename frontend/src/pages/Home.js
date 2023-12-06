@@ -7,7 +7,7 @@ import { Navigate } from 'react-router-dom';
 
 const Home = ({ isLogin }) => {
   if (!isLogin) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/auth" />;
   }
 
   return (
