@@ -1,6 +1,12 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Login from "./pages/Login";
 import Home from "./pages/Home";
 
 const theme = createTheme({
@@ -15,12 +21,16 @@ const theme = createTheme({
 });
 
 const App = () => {
+  const [isLogin, setIsLogin] = useState(false);
+
+
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <div style={{ overflow: 'hidden', height: "100vh", width: "100vw" }}>
+        <div style={{ overflow: "hidden", height: "100vh", width: "100vw" }}>
           <Routes>
-            <Route path="/" element={<Home />} />
+              <Route path="/" element={<Home isLogin={isLogin} />} />
+              <Route path="/login" element={<Login setIsLogin={setIsLogin} />} />
           </Routes>
         </div>
       </Router>
