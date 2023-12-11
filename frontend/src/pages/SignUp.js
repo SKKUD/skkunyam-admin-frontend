@@ -9,7 +9,7 @@ const SignUp = ({setIsLogin}) => {
     const [step, setStep] = useState(2);
 
   return (
-    <Grid container sx={{ backgroundColor: "rgba(255, 251, 229, 1)", height: "100vh", overflow: 'scroll'  }}>
+    <Grid container sx={{ backgroundColor: "rgba(255, 251, 229, 1)", height: "100vh" }}>
         <Header isLogin={false} />
 
         {

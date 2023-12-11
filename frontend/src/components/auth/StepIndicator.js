@@ -8,7 +8,7 @@ const steps = ["SNS 연동", "정보 입력", "완료"];
 
 const StepIndicator = ({ step }) => {
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: "100%"}}>
       <Stepper activeStep={step - 1} alternativeLabel>
         {steps.map((label, index) => (
           <Step
