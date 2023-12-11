@@ -1,6 +1,8 @@
+import React from "react";
 import { Box } from "@mui/system";
+import PickupItem from "./PickupItem"; 
 
-const PickupLists = () => {
+const PickupLists = ({ orders }) => {
   return (
     <Box
       display="flex"
@@ -9,15 +11,11 @@ const PickupLists = () => {
       bgcolor="rgba(234, 234, 234, 1)"
       p="7px"
       borderRadius={"4px"}
-      overflow="auto"
       m="20px 0"
-      fullWidth
     >
-      <Box bgcolor="#fff" height={150} borderRadius={"4px"}></Box>
-      <Box bgcolor="#fff" height={150} borderRadius={"4px"}></Box>
-      {/* <Box bgcolor="#fff" height={158} borderRadius={"4px"} textAlign={"center"}>
-        아직 오픈 시간이 아니에요!
-      </Box> */}
+      {orders.map((order) => (
+        <PickupItem key={order.orderId} order={order} />
+      ))}
     </Box>
   );
 };

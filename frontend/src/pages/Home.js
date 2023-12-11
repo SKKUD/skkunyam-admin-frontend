@@ -18,9 +18,11 @@ const Home = ({ isLogin }) => {
         container
         sx={{
           width: "80%",
-          m: "55px 10% 0",
+          m: "auto",
+          mt: "55px",
           p: "30px 0",
           justifyContent: "center",
+          maxWidth: '1170px'
         }}
         gap={3}
       >

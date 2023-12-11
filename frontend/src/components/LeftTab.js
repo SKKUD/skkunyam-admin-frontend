@@ -15,8 +15,8 @@ const LeftTab = () => {
     backgroundColor: "rgba(110, 195, 113, 1)",
     color: "#fff",
     padding: "2px 8px",
-    fontSize: 14,
-    fontWeight: 700,
+    fontSize: 13,
+    fontWeight: 600,
     borderRadius: "4px",
   };
 
@@ -43,19 +43,19 @@ const LeftTab = () => {
   };
 
   return (
-    <Card sx={{ p: "20px", borderRadius: '4px', border: '1px solid rgba(217, 216, 216, 0.5)', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', height: "calc(100vh - 150px)", }}>
-      <img src={dummyImg} alt="cafeImg" width={"100%"} height={"150px"} />
+    <Card sx={{ p: "15px 20px", borderRadius: '4px', border: '1px solid rgba(217, 216, 216, 0.5)', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', height: "calc(100vh - 150px)", }}>
+      <img src={dummyImg} alt="cafeImg" width={"100%"} height={135} />
 
-      <div style={{ margin: "15px 0" }}>
+      <div style={{ margin: "12px 0" }}>
         <Typography
-          sx={{ fontWeight: 700, fontSize: 18, color: "rgba(70, 70, 70, 1)" }}
+          sx={{ fontWeight: 700, fontSize: 17, color: "rgba(70, 70, 70, 1)" }}
         >
           커피나무
         </Typography>
         <Typography
           sx={{
             fontWeight: 400,
-            fontSize: 16,
+            fontSize: 15,
             color: "rgba(102, 102, 102, 1)",
           }}
         >
@@ -63,9 +63,9 @@ const LeftTab = () => {
         </Typography>
       </div>
 
-      <Divider sx={{ m: "15px 0 30px" }} />
+      <Divider sx={{ m: "15px 0 20px" }} />
 
-      <Grid container gap={"20px"}>
+      <Grid container gap={"15px"}>
         <Grid
           item
           sx={{
@@ -104,7 +104,7 @@ const LeftTab = () => {
         </Grid>
       </Grid>
 
-      <Grid container sx={{ mt: "40px" }}>
+      <Grid container sx={{ mt: "25px" }}>
         <Grid item>{renderButton("current", [currentBtnY, currentBtnG])}</Grid>
         <Grid item>{renderButton("sales", [salesBtnY, salesBtnG])}</Grid>
         <Grid item>{renderButton("store", [storeBtnY, storeBtnG])}</Grid>
