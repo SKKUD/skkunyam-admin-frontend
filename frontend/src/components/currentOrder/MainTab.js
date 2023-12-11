@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Box, Button, Tab, Tabs, Typography } from "@mui/material";
 import OrderItem from "./OrderItem";
+import { dummyOrders } from "../../dummyData/dummyOrders";
 
 const MainTab = () => {
   const [isOpened, setIsOpened] = useState(false);
@@ -14,39 +15,6 @@ const MainTab = () => {
     { label: "새로 들어온 주문!", index: 0 },
     { label: "진행중인 주문", index: 1, margin: "0 7px" },
     { label: "완료된 주문", index: 2 },
-  ];
-
-  const dummyOrders = [
-    {
-      time: "19:29",
-      menus: [
-        {
-          name: "피치 아메리카노",
-          temp: "ice",
-          options: ["샷추가"],
-        },
-        {
-          name: "치아바타 샌드위치",
-          options: [],
-        },
-      ],
-      orderId: 123456789,
-      orderer: "꾸냠이",
-      price: "12,000",
-    },
-    {
-      time: "19:30",
-      menus: [
-        {
-          name: "아메리카노",
-          temp: "hot",
-          options: ["샷추가", "시럽"],
-        },
-      ],
-      orderId: 123456789,
-      orderer: "박진아",
-      price: "4,000",
-    },
   ];
 
   return (
@@ -88,6 +56,12 @@ const MainTab = () => {
             borderRadius: "4px",
             backgroundColor: isOpened ? 'transparent' : "rgba(255, 255, 255, 1)",
             height: "calc(100vh - 200px)",
+            overflowY: "scroll",
+            // Hide scrollbar for Webkit browsers
+            // WebkitOverflowScrolling: "touch",
+            // '&::-webkit-scrollbar': {
+            //   width: "0.5em",
+            // },
           }}
         >
           {isOpened ? (

@@ -1,13 +1,13 @@
 import React from "react";
-import { Box, Typography, Divider } from "@mui/material";
+import { Box, Typography, Divider, Button, Grid } from "@mui/material";
 
 const OrderItem = ({ order }) => (
   <Box key={order.orderId} sx={{ textAlign: 'left', backgroundColor: '#fff', p: '20px', mb: '10px' }}>
     <Typography sx={{ fontSize: 20, color: 'rgba(110, 195, 113, 1)', fontWeight: 600 }}>{order.time} 주문</Typography>
 
-    <Box sx={{ mt: '10px' }}>
+    <Grid container sx={{ mt: '10px'}}>
       {order.menus.map((menu, menuIndex) => (
-        <Box key={menuIndex} sx={{ display: 'flex', pb: '10px' }}>
+        <Grid item xs={9} key={menuIndex} sx={{ display: 'flex', pb: '10px'}}>
           {menu.temp ? (
             <span style={{ backgroundColor: menu.temp === "hot" ? 'rgba(255, 205, 77, 1)' : 'rgba(110, 195, 113, 1)', color: "#fff", padding: '2px 5px', marginRight: '7px', width: '15px', height: '20px' }}>
               {menu.temp === "hot" ? '따' : '아'}
@@ -21,9 +21,14 @@ const OrderItem = ({ order }) => (
             <Typography sx={{ fontWeight: 600 }}>{menu.name}</Typography>
             <Typography sx={{ fontSize: 14, color: 'rgba(70, 70, 70, 1)' }}>{menu.options.join(", ")}</Typography>
           </Box>
-        </Box>
+        </Grid>
       ))}
-    </Box>
+
+      <Grid item xs={3} sx={{display: 'flex', flexDirection: 'column', gap: '8px'}}>
+        <Button sx={{backgroundColor: 'rgba(255, 205, 77, 1)', color: 'rgba(114, 88, 39, 1)', p: '3px 15px'}}>주문받기</Button>
+        <Button sx={{backgroundColor: 'rgba(70, 70, 70, 1)', color: 'rgba(255, 205, 77, 1)', p: '3px 15px', mb: '5px'}}>거절하기</Button>
+      </Grid>
+    </Grid>
 
     <Divider sx={{ my: '10px' }} />
 
