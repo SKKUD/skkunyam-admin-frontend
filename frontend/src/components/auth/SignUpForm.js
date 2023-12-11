@@ -66,29 +66,11 @@ const SignUpForm = ({step, setStep}) => {
                 <FormField label="가게위치" placeholder="서울특별시 종로구 명륜동 000-00" id="address" />
                 
                 <Grid item xs={6} >
-                    <Typography
-                        sx={{
-                        color: "rgba(114, 88, 39, 1)",
-                        fontWeight: 700,
-                        fontSize: 15,
-                        mb: "3px",
-                        }}
-                    >
-                        운영요일
-                    </Typography>
+                    <Typography sx={{ color: "rgba(114, 88, 39, 1)", fontWeight: 700, fontSize: 15, mb: "3px" }}> 운영요일 </Typography>
                     <DaysOfWeekSelector />
                 </Grid>
                 <Grid item xs={6}>
-                    <Typography
-                        sx={{
-                        color: "rgba(114, 88, 39, 1)",
-                        fontWeight: 700,
-                        fontSize: 15,
-                        mb: "3px",
-                        }}
-                    >
-                        운영시간
-                    </Typography>
+                    <Typography sx={{ color: "rgba(114, 88, 39, 1)", fontWeight: 700, fontSize: 15, mb: "3px" }}> 운영시간 </Typography>
                     <div style={{display: 'flex', flexDirection: 'row', gap: 12}}>
                         <FormField placeholder="오픈시간"/>
                         <FormField placeholder="마감시간"/>
