@@ -4,9 +4,11 @@ import LeftTab from "../components/LeftTab";
 // current Order
 import MainTab from "../components/currentOrder/MainTab";
 import RightTab from "../components/currentOrder/RightTab";
+// sales
+import SalesMainTab from "../components/sales/SalesMainTab";
 // notice
 import NoticeMainTab from "../components/notice/NoticeMainTab";
-import { Box, Grid, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import { Navigate } from 'react-router-dom';
 
 const Home = ({ isLogin }) => {
@@ -54,6 +56,7 @@ const Home = ({ isLogin }) => {
           (
             <Grid item xs={8.3}>
               {activeTab === 'notice' && <NoticeMainTab />}
+              {activeTab === 'sales' && <SalesMainTab />}
             </Grid>
           )
         }
