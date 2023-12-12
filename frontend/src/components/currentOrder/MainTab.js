@@ -57,11 +57,10 @@ const MainTab = () => {
             backgroundColor: isOpened ? 'transparent' : "rgba(255, 255, 255, 1)",
             height: "calc(100vh - 200px)",
             overflowY: "scroll",
-            // Hide scrollbar for Webkit browsers
-            // WebkitOverflowScrolling: "touch",
-            // '&::-webkit-scrollbar': {
-            //   width: "0.5em",
-            // },
+            WebkitOverflowScrolling: "touch",
+            '&::-webkit-scrollbar': {
+              width: "0em",
+            },
           }}
         >
           {isOpened ? (
@@ -70,7 +69,7 @@ const MainTab = () => {
                 <div>
                   {dummyOrders.length !== 0 ? (
                     dummyOrders.map((order) => (
-                      <OrderItem key={order.orderId} order={order} />
+                      <OrderItem key={order.orderId} order={order} type="new"/>
                     ))
                   ) : (
                     <Typography>새로 들어온 주문이 없습니다.</Typography>
@@ -78,14 +77,26 @@ const MainTab = () => {
                 </div>
               )}
               {tabValue === 1 && (
-                <Typography>
-                  내용2: 진행중인 주문에 대한 내용을 여기에 표시
-                </Typography>
+                <div>
+                  {dummyOrders.length !== 0 ? (
+                    dummyOrders.map((order) => (
+                      <OrderItem key={order.orderId} order={order} type="now"/>
+                    ))
+                  ) : (
+                    <Typography>진행중인 주문이 없습니다.</Typography>
+                  )}
+                </div>
               )}
               {tabValue === 2 && (
-                <Typography>
-                  내용3: 완료된 주문에 대한 내용을 여기에 표시
-                </Typography>
+                <div>
+                  {dummyOrders.length !== 0 ? (
+                    dummyOrders.map((order) => (
+                      <OrderItem key={order.orderId} order={order} type="past"/>
+                    ))
+                  ) : (
+                    <Typography>완료된 주문이 없습니다.</Typography>
+                  )}
+                </div>
               )}
             </>
           ) : (

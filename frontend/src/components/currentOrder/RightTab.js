@@ -4,10 +4,12 @@ import { dummyOrders } from "../../dummyData/dummyOrders";
 
 const RightTab = () => {
     return (
-        <div style={{marginTop: '55px' }}>
+        <div style={{marginTop: '40px' }}>
             <OrderSummaryBox/>
 
-            <PickupLists orders={dummyOrders}/>
+            <div style={{height: "40vh", margin: '20px 0', backgroundColor: "rgba(234, 234, 234, 1)", padding: '7px', borderRadius: '4px' }}> 
+                <PickupLists orders={dummyOrders}/>
+            </div>
         </div>
     );
 }
