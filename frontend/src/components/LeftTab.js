@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Card, Typography, Divider, Grid, Button, Box } from "@mui/material";
 import dummyImg from "../images/dummy1.png";
 import currentBtnY from "../images/btn_currentOrder_y.png";
@@ -10,7 +9,7 @@ import storeBtnG from "../images/btn_manageStore_g.png";
 import noticeBtnY from "../images/btn_notice_y.png";
 import noticeBtnG from "../images/btn_notice_g.png";
 
-const LeftTab = () => {
+const LeftTab = ({ activeTab, onTabChange }) => {
   const labelStyle = {
     backgroundColor: "rgba(110, 195, 113, 1)",
     color: "#fff",
@@ -29,17 +28,15 @@ const LeftTab = () => {
     >
       <Box
         component="img"
-        src={activeBtn === btnType ? imgSrc[0] : imgSrc[1]}
+        src={activeTab === btnType ? imgSrc[0] : imgSrc[1]}
         alt={`${btnType}Btn`}
         width={"100%"}
       />
     </Button>
   );
 
-  const [activeBtn, setActiveBtn] = useState("current");
-
   const handleBtnClick = (btnType) => {
-    setActiveBtn(btnType);
+    onTabChange(btnType);
   };
 
   return (
