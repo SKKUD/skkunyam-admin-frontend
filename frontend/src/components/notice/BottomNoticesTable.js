@@ -14,7 +14,7 @@ import {
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 
-const BottomNoticesTable = ({ notices, page, handleChangePage }) => {
+const BottomNoticesTable = ({ notices, page, handleChangePage, onNoticeClick }) => {
   const rowsPerPage = 8;
 
   const handleBackButtonClick = (event) => {
@@ -42,7 +42,7 @@ const BottomNoticesTable = ({ notices, page, handleChangePage }) => {
           {notices
             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             .map((notice, index) => (
-              <TableRow key={index}>
+              <TableRow key={index} onClick={() => onNoticeClick(notice)}>
                 <TableCell>{notice.date}</TableCell>
                 <TableCell>{notice.title}</TableCell>
               </TableRow>
