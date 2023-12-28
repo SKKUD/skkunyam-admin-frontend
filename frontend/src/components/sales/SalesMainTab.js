@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Typography, Grid, Box } from '@mui/material';
+import { Typography, Grid } from '@mui/material';
 import PeriodToggleGroup from './PeriodToggleGroup';
 import TotalSales from './TotalSales';
 
