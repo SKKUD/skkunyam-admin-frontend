@@ -15,6 +15,7 @@ export const dummyOrders = [
       orderId: 123456789,
       orderer: "꾸냠이",
       price: "12,000",
+      status: "new", // 'new', 'in-progress', 'completed'
     },
     {
       time: "19:30",
@@ -28,6 +29,7 @@ export const dummyOrders = [
       orderId: 123456788,
       orderer: "박진아",
       price: "4,000",
+      status: "new", // 'new', 'in-progress', 'completed'
     },
     {
       time: "19:31",
@@ -46,5 +48,6 @@ export const dummyOrders = [
       orderId: 123456787,
       orderer: "박진아",
       price: "4,000",
+      status: "new", // 'new', 'in-progress', 'completed'
     },
   ];
