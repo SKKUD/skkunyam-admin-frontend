@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, Divider, Button, Grid } from "@mui/material";
 
-const OrderItem = ({ order }) => (
+const OrderItem = ({ order, type, onAccept, onReject }) => (
   <Box key={order.orderId} sx={{ textAlign: 'left', backgroundColor: '#fff', p: '20px', mb: '10px' }}>
     <Typography sx={{ fontSize: 20, color: 'rgba(110, 195, 113, 1)', fontWeight: 600 }}>{order.time} 주문</Typography>
 
@@ -25,8 +25,35 @@ const OrderItem = ({ order }) => (
       ))}
 
       <Grid item xs={3} sx={{display: 'flex', flexDirection: 'column', gap: '8px'}}>
-        <Button sx={{backgroundColor: 'rgba(255, 205, 77, 1)', color: 'rgba(114, 88, 39, 1)', p: '3px 15px'}}>주문받기</Button>
-        <Button sx={{backgroundColor: 'rgba(70, 70, 70, 1)', color: 'rgba(255, 205, 77, 1)', p: '3px 15px', mb: '5px'}}>거절하기</Button>
+        { (type === "new" || type === "now") ? (
+          <>
+            <Button
+              sx={{
+                backgroundColor: 'rgba(255, 205, 77, 1)',
+                color: 'rgba(114, 88, 39, 1)',
+                p: '3px 15px',
+              }}
+              onClick={onAccept}
+            >
+              {type === "new" ? '주문받기' : '조리완료'}
+            </Button>
+            <Button
+              sx={{
+                backgroundColor: 'rgba(70, 70, 70, 1)',
+                color: 'rgba(255, 205, 77, 1)',
+                p: '3px 15px',
+                mb: '5px',
+              }}
+              onClick={onReject}
+            >
+              거절하기
+            </Button>
+          </>
+        ) : (
+          <>
+            <Button sx={{backgroundColor: 'rgba(70, 70, 70, 1)', color: 'rgba(255, 205, 77, 1)', p: '3px 15px', mb: '5px'}}>확인하기</Button>
+          </>
+        )}
       </Grid>
     </Grid>
 
