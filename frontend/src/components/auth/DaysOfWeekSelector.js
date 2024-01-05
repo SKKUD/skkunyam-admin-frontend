@@ -4,10 +4,6 @@ import { ToggleButtonGroup, ToggleButton } from '@mui/material';
 const DaysOfWeekSelector = () => {
   const [selectedDays, setSelectedDays] = useState([]);
 
-  // useEffect(() => {
-  //   console.log(selectedDays);
-  // }, [selectedDays]);
-
   const onDayToggle = (event, newDays) => {
     setSelectedDays(newDays);
   };
