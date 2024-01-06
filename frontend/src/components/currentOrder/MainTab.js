@@ -38,6 +38,13 @@ const MainTab = () => {
     setIsAcceptPopupOpened(true);
   }
 
+  const handleCheck = (orderId) => {
+    setActionType("check");
+    const orderToCheck = orders.find((order) => order.orderId === orderId);
+    setSelectedOrder(orderToCheck);
+    setIsAcceptPopupOpened(true);
+  };
+
   const tabsInfo = [
     { label: "새로 들어온 주문!", index: 0 },
     { label: "진행중인 주문", index: 1, margin: "0 7px" },
@@ -127,7 +134,7 @@ const MainTab = () => {
                   {orders
                     .filter((order) => order.status === "completed")
                     .map((order) => (
-                      <OrderItem key={order.orderId} order={order} type="past" />
+                      <OrderItem key={order.orderId} order={order} type="past" onCheck={() => handleCheck(order.orderId)}/>
                     ))}
                 </div>
               )}
@@ -200,6 +207,9 @@ const MainTab = () => {
             const updatedOrders = orders.filter((order) => order.orderId !== selectedOrder.orderId);
             setOrders(updatedOrders);
           }
+          setIsAcceptPopupOpened(false);
+        }}
+        onCheck={() => {
           setIsAcceptPopupOpened(false);
         }}
         orderInfo={selectedOrder}

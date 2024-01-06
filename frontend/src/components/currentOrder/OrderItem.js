@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, Divider, Button, Grid } from "@mui/material";
 
-const OrderItem = ({ order, type, onAccept, onReject }) => (
+const OrderItem = ({ order, type, onAccept, onReject, onCheck }) => (
   <Box key={order.orderId} sx={{ textAlign: 'left', backgroundColor: '#fff', p: '20px', mb: '10px' }}>
     <Typography sx={{ fontSize: 20, color: 'rgba(110, 195, 113, 1)', fontWeight: 600 }}>{order.time} 주문</Typography>
 
@@ -51,7 +51,7 @@ const OrderItem = ({ order, type, onAccept, onReject }) => (
           </>
         ) : (
           <>
-            <Button sx={{backgroundColor: 'rgba(70, 70, 70, 1)', color: 'rgba(255, 205, 77, 1)', p: '3px 15px', mb: '5px'}}>확인하기</Button>
+            <Button onClick={onCheck} sx={{backgroundColor: 'rgba(70, 70, 70, 1)', color: 'rgba(255, 205, 77, 1)', p: '3px 15px', mb: '5px'}}>확인하기</Button>
           </>
         )}
       </Grid>
