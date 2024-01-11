@@ -1,7 +1,7 @@
 import { Grid, Typography } from '@mui/material';
 import StepIndicator from './StepIndicator';
 import { useNavigate } from 'react-router-dom';
-
+import logo from '../../images/logo.png';
 const FinishSignUp = ({step, setIsLogin}) => {
     const navigate = useNavigate();
 
@@ -13,8 +13,8 @@ const FinishSignUp = ({step, setIsLogin}) => {
     return (
         <>
 
-            <Grid sx={{ mt: "55px", width: "100%", backgroundColor: "rgba(255, 205, 77, 1)", height: "35%" }}>
-                <h1 style={{ textAlign: "center", color: "#fff" }}>이미지 추가 예정</h1>
+            <Grid sx={{ mt: "8%", width: "100%", height: "25%", textAlign: 'center' }}>
+                <img src={logo} alt="logo" style={{ width: 160, height: 'auto'}} />
             </Grid>
 
             <Grid sx={{ width: "100%", p: '3% 35%' }}>
