@@ -1,4 +1,4 @@
-import menu1Image from '../images/menu1.jpg';
+import menu1Image from '../images/menu1.jpeg';
 import menu2Image from '../images/menu2.jpg';
 import menu3Image from '../images/menu3.jpg';
 import menu4Image from '../images/menu4.jpeg';
