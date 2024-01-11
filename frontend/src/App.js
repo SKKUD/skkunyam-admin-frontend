@@ -22,7 +22,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <div style={{ overflow: "hidden", height: "100vh", width: "100vw" }}>
+        <div style={{ overflow: "hidden", height: "100%", width: "100vw" }}>
           <Routes>
             <Route path="/" element={<Home isLogin={isLogin} />} />
             <Route path="/auth" element={<Auth setIsLogin={setIsLogin} />} />

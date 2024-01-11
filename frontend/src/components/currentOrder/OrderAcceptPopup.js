@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Dialog, DialogTitle, DialogContent, DialogActions, TextField, Button, Typography, Divider, Box } from "@mui/material";
+import { calculateCompletionTime } from "../../utils/calculateTime";
 
-const OrderAcceptPopup = ({ actionType, isOpened, onClose, onAccept, onReject, orderInfo }) => {
+const OrderAcceptPopup = ({ actionType, isOpened, onClose, onAccept, onReject, onCheck, orderInfo }) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleAction = () => {
@@ -9,6 +10,8 @@ const OrderAcceptPopup = ({ actionType, isOpened, onClose, onAccept, onReject, o
       onAccept(inputValue);
     } else if (actionType === "reject") {
       onReject(inputValue);
+    } else {
+      onCheck();
     }
     setInputValue(""); 
     onClose();
@@ -51,11 +54,13 @@ const OrderAcceptPopup = ({ actionType, isOpened, onClose, onAccept, onReject, o
       {label}
     </Button>
   );
-
+  
   return (
     <Dialog open={isOpened} onClose={handleClose} >
       <DialogTitle sx={{ p: 6, textAlign: 'center', fontWeight: 600, fontSize: 28 }}>
-        {actionType === "accept" ? "주문 받을게요!" : "주문 거절하시겠어요?"}
+        {actionType === "accept" && "주문 받을게요!"}
+        {actionType === "reject" && "주문 거절하시겠어요?"}
+        {actionType === "check" && "완료된 주문 확인"}
       </DialogTitle>
       <DialogContent sx={{ p: 6 }}>
         <Typography sx={{ fontSize: 16, color: 'rgba(70, 70, 70, 1)', fontWeight: 700 }}>주문메뉴</Typography>
@@ -86,23 +91,47 @@ const OrderAcceptPopup = ({ actionType, isOpened, onClose, onAccept, onReject, o
             <Divider sx={{ my: '10px' }} />
             {renderTextField("소요시간을 입력해주세요")}
           </>
-        ) : (
+        ) : actionType === "reject" ? (
           <>
             <Typography sx={{ fontSize: 16, color: 'rgba(70, 70, 70, 1)', fontWeight: 700 }}>취소사유</Typography>
             <Divider sx={{ my: '10px' }} />
             {renderTextField("취소사유를 입력해주세요")}
           </>
+        ) : (
+          <>
+            <Typography sx={{ fontSize: 16, color: 'rgba(70, 70, 70, 1)', fontWeight: 700 }}>주문확인</Typography>
+            <Divider sx={{ my: '10px' }} />
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <Typography sx={{ fontSize: 14, color: 'rgba(70, 70, 70, 1)', fontWeight: 700 }}>조리완료시간</Typography>
+                <Typography sx={{ fontSize: 14, color: 'rgba(70, 70, 70, 1)', fontWeight: 700 }}>{orderInfo && calculateCompletionTime(orderInfo.time)}</Typography>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <Typography sx={{ fontSize: 14, color: 'rgba(70, 70, 70, 1)', fontWeight: 700 }}>결제시간</Typography>
+                <Typography sx={{ fontSize: 14, color: 'rgba(70, 70, 70, 1)', fontWeight: 700 }}>{orderInfo && orderInfo.time}</Typography>
+              </div>
+            </div>
+          </>
         )}
       </DialogContent>
       <DialogActions sx={{ display: 'flex', justifyContent: 'space-between', p: 0, mt: 3 }}>
-        <div style={{ flex: 2, margin: 0 }}>
-          {actionType === "accept" ?
-            renderActionButton("주문받기", 'rgba(255, 205, 77, 1)', 'rgba(70, 70, 70, 1)') :
-            renderActionButton("주문취소", 'rgba(255, 205, 77, 1)', 'rgba(70, 70, 70, 1)')}
-        </div>
-        <div style={{ flex: 1, margin: 0 }}>
-          {renderActionButton("닫기", 'rgba(70, 70, 70, 1)', 'rgba(255, 231, 105, 1)')}
-        </div>
+        {
+          actionType === "check" ?
+          <div style={{ flex: 1, margin: 0 }}>
+            {renderActionButton("닫기", 'rgba(255, 205, 77, 1)', 'rgba(70, 70, 70, 1)')}
+          </div>
+          :
+          <>
+            <div style={{ flex: 2, margin: 0 }}>
+              {actionType === "accept" ?
+                renderActionButton("주문받기", 'rgba(255, 205, 77, 1)', 'rgba(70, 70, 70, 1)') :
+                renderActionButton("주문취소", 'rgba(255, 205, 77, 1)', 'rgba(70, 70, 70, 1)')}
+            </div>
+            <div style={{ flex: 1, margin: 0 }}>
+              {renderActionButton("닫기", 'rgba(70, 70, 70, 1)', 'rgba(255, 231, 105, 1)')}
+            </div>
+          </>
+        }
       </DialogActions>
     </Dialog>
   );
