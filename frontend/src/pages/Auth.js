@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import { Grid, Typography, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import backgroundImg from "../images/authBackground.png";
 
 const Auth = ({ setIsLogin }) => {
   const navigate = useNavigate();
@@ -26,8 +27,9 @@ const Auth = ({ setIsLogin }) => {
       <Header isLogin={false} />
 
       <Grid sx={{ mt: "55px", width: "100%", backgroundColor: "rgba(255, 205, 77, 1)", height: "35%" }}>
-        <h1 style={{ textAlign: "center", color: "#fff" }}>이미지 추가 예정</h1>
+        <img src={backgroundImg} alt="background" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
       </Grid>
+      
 
       <Grid sx={{ width: "100%", justifyContent: "center", textAlign: "center" }}>
         <Typography sx={{ color: "rgba(70, 70, 70, 1)", fontWeight: 700, fontSize: 32, lineHeight: "42px" }}>
